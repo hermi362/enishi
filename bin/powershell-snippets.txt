@@ -1,0 +1,18 @@
+# First attempt. Pipe gci into Select-String. SLOOOOOW.
+Get-ChildItem -Path 'Z:\デキスパートDATA\' -Recurse -Depth 2 -Include *.koj,*.dst | Select-String  -Encoding 'OEM' -Pattern '15-042' 
+
+
+# use -Filter instead of -Include --> MUCH better performance.
+Get-ChildItem -Path 'Z:\デキスパートDATA\' -Recurse -Depth 2 -Filter *.koj | Select-String  -Encoding 'OEM' -Pattern '15-042' 
+Get-ChildItem -Path 'Z:\デキスパートDATA\' -Recurse -Depth 2 -Filter *.dst | Select-String  -Encoding 'OEM' -Pattern '15-042' 
+
+# Examples
+# Search for projects with '市道' in the name
+gci -Path 'Z:\デキスパートDATA\' -Recurse -Depth 2 -Filter *.koj | Select-String  -Encoding 'OEM' -Pattern '市道' 
+# Search for projects with '公園' in the name
+gci -Path 'Z:\デキスパートDATA\' -Recurse -Depth 2 -Filter *.koj | Select-String  -Encoding 'OEM' -Pattern '公園' 
+
+# Prompt for search string
+$needle = Read-Host "検索する工事名"
+gci -Path 'Z:\デキスパートDATA\' -Recurse -Depth 2 -Filter *.koj | Select-String  -Encoding 'OEM' -Pattern $needle 
+

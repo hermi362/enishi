@@ -1,0 +1,11 @@
+rem @echo off
+REM 2019/10/16 H.Gonzalez
+REM 予定表　.xlsxファイルをonedriveにコピー
+REM このコマンドファイルはタスクスケジュラから実行されます。
+REM
+REM xcopy /v /y "Z:\★第７期\第７期　作業予定表（31.4.1～32.3.31）.xlsx" C:\Users\user\OneDrive
+
+xcopy /v /y "Z:\★第８期\第８期　作業予定表（Ｒ2.4.1～Ｒ3.3.31）.xlsx" C:\Users\PC08\OneDrive\
+
+REM 歴史記録：タスクの日付を記録する
+REM date /t >> "C:\Users\PC08\OneDrive\ドキュメント\sync-history.txt"
